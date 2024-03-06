@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Password Generator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="snowfall"></div>
+  <div class="container">
+    <h1>Password Generator</h1>
+    <label for="length">Password Length:</label>
+    <input type="number" id="length" value="8" min="1" max="128">
+    <br>
+    <input type="checkbox" id="includeNumbers">
+    <label for="includeNumbers">Include Numbers</label>
+    <br>
+    <input type="checkbox" id="includeSymbols">
+    <label for="includeSymbols">Include Symbols</label>
+    <br>
+    <button onclick="generatePassword()">Generate Password</button>
+    <br>
+    <input type="text" id="password" readonly>
+    <p id="welcome-text">Welcome to our website!</p>
+    <p>Generate strong and secure passwords for your accounts.</p>
+    <p>Customize the length and options to fit your needs.</p>
+    <div class="legal">
+      <a href="tos.html">Terms of Service</a>
+      <a href="privacy_policy.html">Privacy Policy</a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+  </html>
