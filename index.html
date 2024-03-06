@@ -4,7 +4,72 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Password Generator</title>
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .snowfall {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      background-image: url('https://pin.it/3dQojtS7Y'); /* Replace with your snowfall animation GIF */
+    }
+
+    .container {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      color: white;
+      font-family: "Times New Roman", Times, serif;
+      background-color: #003366; /* Replace with your desired background color */
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="number"],
+    input[type="checkbox"],
+    button {
+      margin: 5px;
+    }
+
+    button {
+      padding: 5px 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type="text"] {
+      margin-top: 10px;
+      padding: 5px;
+      width: 200px;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    .legal {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .legal a {
+      color: #ffffff;
+      margin-left: 10px;
+    }
+  </style>
 </head>
 <body>
   <div class="snowfall"></div>
@@ -26,11 +91,56 @@
     <p>Generate strong and secure passwords for your accounts.</p>
     <p>Customize the length and options to fit your needs.</p>
     <div class="legal">
-      <a href="tos.html">Terms of Service</a>
+      <a href="terms_of_service.html">Terms of Service</a>
       <a href="privacy_policy.html">Privacy Policy</a>
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    // Function to handle click on Terms of Service link
+    function handleTermsOfServiceClick() {
+      // Add your logic here, such as tracking the click or displaying a confirmation message
+    }
+
+    // Function to handle click on Privacy Policy link
+    function handlePrivacyPolicyClick() {
+      // Add your logic here, such as tracking the click or displaying a confirmation message
+    }
+
+    // Function to generate password
+    function generatePassword() {
+      const length = parseInt(document.getElementById('length').value);
+
+      const includeNumbers = document.getElementById('includeNumbers').checked;
+      const includeSymbols = document.getElementById('includeSymbols').checked;
+      
+      let charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      if (includeNumbers) charset += '0123456789';
+      if (includeSymbols) charset += '!@#$%^&*()_+[]{}|;:,.<>?';
+      
+      let password = '';
+      for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * charset.length);
+        password += charset[randomIndex];
+      }
+      
+      document.getElementById('password').value = password;
+    }
+
+    // Event listener for when the page has fully loaded
+    window.onload = function() {
+      // Add event listeners to Terms of Service and Privacy Policy links
+      const termsOfServiceLink = document.querySelector('a[href="tos.html"]');
+      const privacyPolicyLink = document.querySelector('a[href="privacy_policy.html"]');
+
+      if (termsOfServiceLink) {
+        termsOfServiceLink.addEventListener('click', handleTermsOfServiceClick);
+      }
+
+      if (privacyPolicyLink) {
+        privacyPolicyLink.addEventListener('click', handlePrivacyPolicyClick);
+      }
+    };
+  </script>
 </body>
-  </html>
+      </html>
